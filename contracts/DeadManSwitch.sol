@@ -1,4 +1,6 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.6.0;
+
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v2.4.0/contracts/math/SafeMath.sol";
 
 contract DeadManSwitch {
     
@@ -28,7 +30,8 @@ contract DeadManSwitch {
     }
     
     function isDead() public{
-        require ((block.number - lastCheckedBlock) >= 10, "Owner is still alive.");
+        uint256 blockDifference = block.number.sub(lastCheckedBlock);
+        require (blockDifference >= 10, "Owner is still alive.");
         isAlive = false;
     }
     

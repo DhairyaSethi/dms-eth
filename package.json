@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/DhairyaSethi/dms-eth/issues"
   },
-  "homepage": "https://github.com/DhairyaSethi/dms-eth#readme"
+  "homepage": "https://github.com/DhairyaSethi/dms-eth#readme",
+  "dependencies": {
+    "truffle": "^5.1.30"
+  }
 }
