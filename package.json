@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/DhairyaSethi/dms-eth#readme",
   "dependencies": {
-    "truffle": "^5.1.30"
+    "@truffle/hdwallet-provider": "^1.0.35",
+    "truffle": "^5.1.30",
+    "truffle-hdwallet-provider": "^1.0.17"
   }
 }

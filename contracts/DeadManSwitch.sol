@@ -1,6 +1,7 @@
 pragma solidity ^0.5.0;
 
 import './SafeMath.sol';
+
 contract DeadManSwitch {
     
     using SafeMath for uint;
