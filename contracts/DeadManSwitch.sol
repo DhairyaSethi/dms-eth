@@ -1,7 +1,6 @@
 pragma solidity ^0.5.0;
 
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v2.4.0/contracts/math/SafeMath.sol";
-
+import './SafeMath.sol';
 contract DeadManSwitch {
     
     using SafeMath for uint;
