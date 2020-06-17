@@ -4,6 +4,8 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v2.4.0/contr
 
 contract DeadManSwitch {
     
+    using SafeMath for uint;
+    
     uint256 public lastCheckedBlock;
     address private owner;
     address private beneficiary;
@@ -35,17 +37,21 @@ contract DeadManSwitch {
         isAlive = false;
     }
     
-    function getBalance() internal view onlyBeneficiary returns(uint256) {
+    function getBalance() view public onlyBeneficiary returns(uint256) {
         uint256 bal = owner.balance;
         return bal;
     }
+    function kill() public {
+        isAlive = false;
+    }
     
-    function withdraw() public onlyBeneficiary payable {
+    function withdraw(uint256 amount) public onlyBeneficiary payable {
         require(!isAlive, "Owner is still alive.");
         uint256 bal = getBalance();
-        (bool success, ) = msg.sender.call.value(bal)("");
+        require(amount <= bal, "Insufficient Funds." );
+        (bool success, ) = msg.sender.call.value(amount)("");
         require(success, "Withdraw transfer failed.");
-        
+//        msg.sender.transfer(bal);      
     }
     
     
