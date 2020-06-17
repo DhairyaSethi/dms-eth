@@ -1,0 +1,22 @@
+{
+  "name": "dms-eth",
+  "version": "1.0.0",
+  "description": "Dead Man Switch implementation",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DhairyaSethi/dms-eth.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DhairyaSethi/dms-eth/issues"
+  },
+  "homepage": "https://github.com/DhairyaSethi/dms-eth#readme"
+}
