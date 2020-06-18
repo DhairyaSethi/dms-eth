@@ -21,6 +21,9 @@ contract DeadManSwitch {
         lastCheckedBlock = block.number;
     }
     
+    function () public payable onlyOwner {
+    }
+    
     modifier onlyOwner () {
         require(msg.sender == owner);
         _;
