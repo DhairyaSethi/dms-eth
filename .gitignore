@@ -1,4 +1,5 @@
 secrets/
+build/
 
 # Logs
 logs

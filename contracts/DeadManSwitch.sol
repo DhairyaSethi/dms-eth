@@ -10,6 +10,9 @@ contract DeadManSwitch {
     address private owner;
     address private beneficiary;
     bool public isAlive;
+
+    event Withdrawal (uint256 _amount);
+    event ownerDead ();
     
     constructor (address _beneficiary) public {
         owner = msg.sender;
@@ -35,14 +38,12 @@ contract DeadManSwitch {
         uint256 blockDifference = block.number.sub(lastCheckedBlock);
         require (blockDifference >= 10, "Owner is still alive.");
         isAlive = false;
+        emit ownerDead();
     }
     
     function getBalance() view public onlyBeneficiary returns(uint256) {
         uint256 bal = owner.balance;
         return bal;
-    }
-    function kill() public {
-        isAlive = false;
     }
     
     function withdraw(uint256 amount) public onlyBeneficiary payable {
@@ -51,6 +52,8 @@ contract DeadManSwitch {
         require(amount <= bal, "Insufficient Funds." );
         (bool success, ) = msg.sender.call.value(amount)("");
         require(success, "Withdraw transfer failed.");
+        emit Withdrawal (amount);
+
 //        msg.sender.transfer(bal);      
     }
     
